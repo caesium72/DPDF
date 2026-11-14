@@ -9,6 +9,10 @@
   .page { position: relative; }
   .page canvas { display: block; visibility: hidden; box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6); }
   .page.ready canvas { visibility: visible; }
+  .textLayer { position: absolute; text-align: initial; inset: 0; overflow: clip; opacity: 1; line-height: 1; -webkit-text-size-adjust: none; text-size-adjust: none; forced-color-adjust: none; transform-origin: 0 0; z-index: 0; }
+  .textLayer :is(span, br) { color: transparent; position: absolute; white-space: pre; cursor: text; transform-origin: 0% 0%; }
+  .textLayer :is(span, br)::selection { background: rgba(90, 140, 235, 0.35); }
+  .textLayer br::selection { background: transparent; }
   #status { position: fixed; top: 10px; left: 50%; transform: translateX(-50%); color: #b8aca2; background: rgba(20, 17, 15, 0.9); padding: 8px 14px; border-radius: 8px; font: 13px system-ui, sans-serif; z-index: 10; }
   #status.hidden { display: none; }
 </style>

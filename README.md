@@ -125,6 +125,7 @@ out_c  = bg_c + (out_c / 255) · (fg_c − bg_c)  // map white→background, bla
 
 - 🌙 **One-tap ritual** — a single switch, remembered across sessions.
 - 🎨 **Colors that stay themselves** — the rare dark mode a designer wouldn't scream about.
+- 🖱️ **Real text, really selectable** — an invisible text layer sits under your cursor, so you can select, copy and Ctrl+F like any web page.
 - 📚 **Built for big documents** — lazy rendering + memory-bounded pages.
 - 🔒 **Private by construction** — no accounts, no servers, no telemetry; everything is local code.
 - ⚡ **Zero-click** — you never configure a site list. Every PDF, everywhere, by default.
@@ -134,9 +135,9 @@ out_c  = bg_c + (out_c / 255) · (fg_c − bg_c)  // map white→background, bla
 ## ❓ FAQ
 
 <details>
-<summary><strong>Can I copy or search text in the viewer?</strong></summary>
+<summary><strong>Can I select, copy and search text?</strong></summary>
 
-Pages are rendered as high-quality images (that's what makes pixel-accurate darkening possible), so there's no text selection or Ctrl+F. If you need to search or quote, toggle OFF — the native viewer returns instantly.
+Yes. Under the rendered page sits pdf.js's invisible **text layer** — real, positioned text spans that you can highlight with the mouse, copy (Ctrl+C), and search (Ctrl+F). It's the same trick Firefox's built-in PDF viewer uses, so selection behaves like an ordinary web page.
 
 </details>
 
@@ -177,7 +178,7 @@ DPDF/
 ├── manifest.json          # MV3 manifest + the one DNR rewrite rule
 ├── background.js          # registers the redirect rule, follows the toggle
 ├── popup.html / popup.js  # the one-switch UI 🌙
-├── viewer.html / viewer.js# pdf.js rendering + the color-preserving pixel pass
+├── viewer.html / viewer.js# pdf.js rendering + color-preserving pixel pass + selectable text layer
 ├── lib/                   # vendored pdf.js 4.10 (viewer, worker, fonts, cmaps)
 ├── icons/                 # grey PDF logo, 16→128 px
 └── assets/                # this README's animated diagrams

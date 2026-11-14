@@ -7,6 +7,14 @@ const PAGES = document.getElementById('pages');
 const STATUS = document.getElementById('status');
 const source = decodeURIComponent(location.hash.slice(1));
 
+let fileName = 'PDF';
+try {
+  const clean = source.split('#')[0].split('?')[0];
+  const base = decodeURIComponent(clean.split('/').pop() || '');
+  if (base) fileName = base;
+} catch (e) {}
+document.title = fileName;
+
 pdfjsLib.GlobalWorkerOptions.workerPort = new Worker(
   chrome.runtime.getURL('lib/pdf.worker.min.mjs'),
   { type: 'module' }
@@ -137,6 +145,7 @@ async function main() {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   const scale = Math.min(fit * dpr, MAX_SCALE);
   const cssW = Math.round(vp1.width * fit);
+  PAGES.style.setProperty('--scale-factor', fit);
 
   const state = [];
   for (let i = 1; i <= doc.numPages; i++) {
@@ -189,6 +198,19 @@ async function main() {
       s.holder.style.height = cssH + 'px';
       s.holder.classList.add('ready');
       s.status = 'ready';
+      try {
+        const tc = await page.getTextContent();
+        if (gen !== s.gen) return;
+        const tlDiv = s.tlDiv || (s.tlDiv = document.createElement('div'));
+        tlDiv.className = 'textLayer';
+        if (tlDiv.parentNode !== s.holder) s.holder.appendChild(tlDiv);
+        else tlDiv.textContent = '';
+        const vpText = page.getViewport({ scale: fit });
+        const tl = new pdfjsLib.TextLayer({ textContentSource: tc, container: tlDiv, viewport: vpText });
+        s.tl = tl;
+        await tl.render();
+        if (gen !== s.gen) return;
+      } catch (e) { return; }
       page.cleanup();
     } catch (e) {
       if (gen === s.gen) s.status = 'idle';
@@ -202,6 +224,11 @@ async function main() {
       try { s.task.cancel(); } catch (e) {}
       s.task = null;
     }
+    if (s.tl) {
+      try { s.tl.cancel(); } catch (e) {}
+      s.tl = null;
+    }
+    if (s.tlDiv) s.tlDiv.textContent = '';
     if (s.status !== 'idle') {
       s.status = 'idle';
       s.holder.classList.remove('ready');
