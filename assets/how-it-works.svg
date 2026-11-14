@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" role="img" aria-label="What happens when you open a PDF with DPDF">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b1720"/>
+      <stop offset="1" stop-color="#24201b"/>
+    </linearGradient>
+    <linearGradient id="paper2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f0f0f0"/>
+    </linearGradient>
+    <linearGradient id="night2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#24201b"/>
+      <stop offset="1" stop-color="#1c1916"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a7f74"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="400" rx="18" fill="url(#bg2)"/>
+  <text x="440" y="40" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-size="17" font-weight="bold" fill="#eadfc8">What happens when you open a PDF</text>
+
+  <!-- 1: white page -->
+  <g>
+    <rect x="40" y="80" width="225" height="270" rx="12" fill="#121014" stroke="#3a342f" stroke-width="1"/>
+    <text x="152" y="108" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-size="12" fill="#9a9186">1 &#183; the PDF as you know it</text>
+    <rect x="72" y="126" width="160" height="196" rx="6" fill="url(#paper2)"/>
+    <rect x="86" y="144" width="86" height="9" rx="3" fill="#d94f3d"/>
+    <rect x="86" y="166" width="120" height="6" rx="3" fill="#3f3f3f"/>
+    <rect x="86" y="180" width="104" height="6" rx="3" fill="#3f3f3f"/>
+    <rect x="86" y="194" width="120" height="6" rx="3" fill="#3f3f3f"/>
+    <!-- photo chip: stays vivid -->
+    <rect x="86" y="212" width="40" height="30" rx="3" fill="#ff5252"/>
+    <rect x="100" y="212" width="26" height="15" rx="2" fill="#4cd964"/>
+    <rect x="86" y="227" width="14" height="15" rx="2" fill="#2f8fff"/>
+    <rect x="86" y="252" width="120" height="6" rx="3" fill="#3f3f3f"/>
+    <rect x="86" y="266" width="96" height="6" rx="3" fill="#3f3f3f"/>
+    <rect x="86" y="280" width="120" height="6" rx="3" fill="#3f3f3f"/>
+    <!-- daylight glare sweep -->
+    <rect x="72" y="126" width="10" height="196" fill="#ffffff" opacity="0.35">
+      <animate attributeName="x" values="72;230;72" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.35;0.1;0.35" dur="3.2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="152" y="342" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-size="11" fill="#7d756b">bright &#183; glare &#183; hard to read at night</text>
+  </g>
+
+  <!-- arrow -->
+  <path d="M282,215 L392,215" stroke="#8a7f74" stroke-width="3" stroke-dasharray="10 8" marker-end="url(#arrow)">
+    <animate attributeName="stroke-dashoffset" from="36" to="0" dur="1.1s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- 2: the pixel pass -->
+  <g>
+    <rect x="336" y="120" width="200" height="190" rx="12" fill="#121014" stroke="#3a342f" stroke-width="1"/>
+    <text x="436" y="146" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-size="12" fill="#9a9186">2 &#183; DPDF pixel pass</text>
+    <!-- rotating gear -->
+    <g transform="translate(436,200)">
+      <g stroke="#e8a04c" stroke-width="3" fill="none">
+        <circle r="17"/>
+        <path d="M0,-26 L0,-17 M0,17 L0,26 M-26,0 L-17,0 M17,0 L26,0 M-18,-18 L-12,-12 M12,12 L18,18 M18,-18 L12,-12 M-12,12 L-18,18"/>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="6s" repeatCount="indefinite"/>
+      </g>
+    </g>
+    <text x="436" y="248" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-size="11" fill="#d8cfc2">invert lightness &#183; keep hue</text>
+    <text x="436" y="266" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-size="11" fill="#d8cfc2">skip photo pixels</text>
+    <text x="436" y="292" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-size="10" fill="#7d756b">runs on your device &#183; 100% local</text>
+  </g>
+
+  <!-- arrow -->
+  <path d="M552,215 L640,215" stroke="#8a7f74" stroke-width="3" stroke-dasharray="10 8" marker-end="url(#arrow)">
+    <animate attributeName="stroke-dashoffset" from="36" to="0" dur="1.1s" begin="-0.55s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- 3: dark page -->
+  <g>
+    <rect x="615" y="80" width="225" height="270" rx="12" fill="#121014" stroke="#3a342f" stroke-width="1"/>
+    <text x="727" y="108" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-size="12" fill="#9a9186">3 &#183; same PDF, ready for night</text>
+    <rect x="647" y="126" width="160" height="196" rx="6" fill="url(#night2)"/>
+    <rect x="661" y="144" width="86" height="9" rx="3" fill="#f2a08c"/>
+    <rect x="661" y="166" width="120" height="6" rx="3" fill="#eadfc8"/>
+    <rect x="661" y="180" width="104" height="6" rx="3" fill="#eadfc8"/>
+    <rect x="661" y="194" width="120" height="6" rx="3" fill="#eadfc8"/>
+    <!-- photo chip: identical colors -->
+    <rect x="661" y="212" width="40" height="30" rx="3" fill="#ff5252"/>
+    <rect x="675" y="212" width="26" height="15" rx="2" fill="#4cd964"/>
+    <rect x="661" y="227" width="14" height="15" rx="2" fill="#2f8fff"/>
+    <rect x="661" y="252" width="120" height="6" rx="3" fill="#eadfc8"/>
+    <rect x="661" y="266" width="96" height="6" rx="3" fill="#eadfc8"/>
+    <rect x="661" y="280" width="120" height="6" rx="3" fill="#eadfc8"/>
+    <!-- red stays red / photos untouched badge -->
+    <text x="661" y="312" font-family="Verdana, Arial, sans-serif" font-size="10" fill="#4cd964">red stays red &#183; photos pixel-identical</text>
+    <!-- gentle moonlight sweep -->
+    <rect x="647" y="126" width="8" height="196" fill="#eadfc8" opacity="0.07">
+      <animate attributeName="x" values="647;807;647" dur="3.6s" repeatCount="indefinite"/>
+    </rect>
+    <text x="727" y="342" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-size="11" fill="#7d756b">warm &#183; calm &#183; colors preserved</text>
+  </g>
+
+  <!-- bottom strip -->
+  <rect x="40" y="366" width="800" height="1.5" fill="#3a342f"/>
+  <text x="440" y="386" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-size="11" fill="#7d756b">text: lightness inverted, hue kept &#8226; photos: 0 pixels changed &#8226; paper scans: darkened with the page</text>
+</svg>

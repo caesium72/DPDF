@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DPDF</title>
+<style>
+  html, body { margin: 0; height: 100%; background: rgb(42, 37, 34); }
+  #pages { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 10px 0 40px; }
+  .page { position: relative; }
+  .page canvas { display: block; visibility: hidden; box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6); }
+  .page.ready canvas { visibility: visible; }
+  #status { position: fixed; top: 10px; left: 50%; transform: translateX(-50%); color: #b8aca2; background: rgba(20, 17, 15, 0.9); padding: 8px 14px; border-radius: 8px; font: 13px system-ui, sans-serif; z-index: 10; }
+  #status.hidden { display: none; }
+</style>
+</head>
+<body>
+<div id="pages"></div>
+<div id="status">Loading…</div>
+<script type="module" src="viewer.js"></script>
+</body>
+</html>
